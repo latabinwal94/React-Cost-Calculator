@@ -18,8 +18,37 @@ const Products = ({ state, dispatch }) => {
             <span>{prod.title}</span>
             <b>$ {prod.price}</b>
           </div>
-          <button className='btn add-cart-btn'>Add to Cart</button>
-          <button className='btn remove-cart-btn'>Remove from Cart</button>
+          {cart.some((p) => p.id === prod.id)
+            ? <button
+                className='btn remove-cart-btn'
+                onClick={() => {
+                  return dispatch({
+                    type: 'REMOVE_FROM_CART',
+                    payload: prod
+                  })
+                }}
+              >
+                Remove from Cart
+              </button>
+            : <button
+                className='btn add-cart-btn'
+                onClick={() => {
+                  return dispatch({
+                    type: 'ADD_TO_CART',
+                    payload: {
+                      id: prod.id,
+                      thumbnail: prod.thumbnail,
+                      qty: 1,
+                      price: prod.price,
+                      title: prod.title
+                    }
+                  })
+                }}
+              >
+                Add to Cart
+              </button>
+
+          }
         </div>
       )}
     </div>
