@@ -25,10 +25,13 @@ function App() {
   },[])
 
   return (
-    <div className='main'>
-      <Products state={state} dispatch={dispatch} />
-      <Cart state={state} dispatch={dispatch} />
-    </div>
+    <>
+      <h3 className='heading'>React Cost calculator Sample Project</h3>
+      <div className='main'>
+        <Products state={state} dispatch={dispatch} />
+        <Cart state={state} dispatch={dispatch} />
+      </div>
+    </>
   );
 }
 
